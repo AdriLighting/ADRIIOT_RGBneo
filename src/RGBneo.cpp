@@ -28,7 +28,6 @@ void RGBneoManagment::create( int & result, int n, int p, int t){
 	    	type = NEO_GRB + NEO_KHZ800;
 	    break;
 	}
-	ADRI_LOG(-1, 2, 2, "RGBneoManagment create","");
 	RGBneoClassArray[_pos] = new RGBneoClass(n, p, type);
 	result = _pos;
 	_pos++;
