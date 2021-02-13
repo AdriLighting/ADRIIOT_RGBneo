@@ -1,7 +1,7 @@
 
 #include <ADRIIOT_RGBneo.h>
 
-RGBneoManagment relay_managment;
+RGBneoManagment rgb_managment;
 int 			relayId;
 int 			relay2Id;
 
@@ -10,14 +10,14 @@ void setup()
 
 	Serial.begin(115200);
 
-	relay_managment.create 		(relayId, 10, D5);
+	rgb_managment.create 		(relayId, 10, D5);
 
 	delay(3000);
-	relay_managment.module(relayId)->leds_rgb(0, 255, 0);
+	rgb_managment.module(relayId)->leds_rgb(0, 255, 0);
 	delay(3000);
-	relay_managment.module(relayId)->leds_black();
+	rgb_managment.module(relayId)->leds_black();
 	delay(3000);
-	relay_managment.module(relayId)->leds_mod();
+	rgb_managment.module(relayId)->leds_mod();
 
 	// byte R,G,B;
 

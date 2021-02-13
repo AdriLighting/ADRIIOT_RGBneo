@@ -4,9 +4,7 @@
 Librairies
 <details>
 ADRIIOT_RGBneo                  = https://github.com/AdriLighting/ADRIIOT_RGBneo
-
-esp8266/arduino                 = https://github.com/esp8266/Arduino/tree/master/libraries
-
+Adafruit NeoPixel               = https://github.com/adafruit/Adafruit_NeoPixel
 ArduinoJson                     = https://github.com/bblanchon/ArduinoJson
 </details>
 Dependency Graph
