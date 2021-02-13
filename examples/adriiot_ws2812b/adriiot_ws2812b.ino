@@ -1,6 +1,5 @@
 
 #include <ADRIIOT_RGBneo.h>
-#include <adri_tools_v2.h>
 
 RGBneoManagment relay_managment;
 int 			relayId;
@@ -8,20 +7,15 @@ int 			relay2Id;
 
 void setup()
 {
-	new adri_toolsV2();
-	new adriTools_logger();
 
 	Serial.begin(115200);
 
 	relay_managment.create 		(relayId, 10, D5);
 
-	ADRI_LOG(-1, 0, 2, "", "");
 	delay(3000);
 	relay_managment.module(relayId)->leds_rgb(0, 255, 0);
-	ADRI_LOG(-1, 0, 2, "", "");
 	delay(3000);
 	relay_managment.module(relayId)->leds_black();
-	ADRI_LOG(-1, 0, 2, "", "");
 	delay(3000);
 	relay_managment.module(relayId)->leds_mod();
 

@@ -18,7 +18,7 @@
 		Adafruit_NeoPixel 	* _leds	= nullptr;;
 		int			_num_leds 	 	= 0;
 	    int			_pin;
-	    uint8_t 	_bri			= 60;
+	    uint8_t 	_bri			= 30;
 	    uint8_t 	_white 			= 60;
 	    RgbColor 	_color 			= {255, 255, 0};
 	    RGBneoMod 	_mod;
@@ -38,8 +38,9 @@
 		void leds_bri(uint8_t bri);
 		void leds_rgb(uint8_t r, uint8_t g, uint8_t b);
 		void leds_rgb(uint8_t r, uint8_t g, uint8_t b, uint8_t w);
-
+		int * getRgb(boolean & ret);
 		void getStatus(boolean & ret);
+		void getBri(int & ret);
 	private:
 	};
 

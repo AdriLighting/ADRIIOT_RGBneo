@@ -1,7 +1,4 @@
 #include "RGBneo.h"
-#include <adri_tools_v2.h>
-
-extern boolean aic_relay;
 
 #define MAX_RELAY 10
 
@@ -42,8 +39,6 @@ RGBneoClass::RGBneoClass(int n, int p, neoPixelType t){
 
     _num_leds 	= n;
     _pin 		= p;
-	ADRI_LOGV(-1, 2, 2, _num_leds, "","");
-	ADRI_LOGV(-1, 2, 2, _pin, "","");
 
     _leds = new Adafruit_NeoPixel(n, p, NEO_GRB + NEO_KHZ800);
 
@@ -78,7 +73,8 @@ void RGBneoClass::leds_bri(uint8_t bri){
 		leds_mod();
 	}
 	_bri = bri;
-	_leds->setBrightness(_bri);	
+	int vBri = map(_bri,0, 100, 0, 255);
+	_leds->setBrightness(vBri);	
 	_leds->show();
 	_off = false;
 }
@@ -111,12 +107,25 @@ void RGBneoClass::leds_rgb(uint8_t r, uint8_t g, uint8_t b, uint8_t w){
 	_color = {r, g, b};
 	_leds->fill(_leds->Color(r, g, b));  
 	_bri = w;
-	_leds->setBrightness(_bri);		
+	int vBri = map(_bri,0, 100, 0, 255);
+	_leds->setBrightness(vBri);		
 	_mod = RGBneoMod_rgb;
 	_leds->show();
 }
 void RGBneoClass::getStatus(boolean & ret){
-	ret = _off;
+	ret = !_off;
+}
+int * RGBneoClass::getRgb(boolean & ret){
+	if (_mod == RGBneoMod_rgb) 	ret = true;
+	else 						ret = false;
+    int	 	*array          = new int[3];
+           	array[0]        = _color.R;
+           	array[1]        = _color.G;
+           	array[2]        = _color.B;	
+   	return array;         
+}
+void RGBneoClass::getBri(int & ret){
+    ret = _bri;  
 }
 
 void RGBneoClass::json(JsonObject & root){
